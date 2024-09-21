@@ -13,25 +13,25 @@
 export default {
   data() {
     return {
-      registeredUser: JSON.parse(localStorage.getItem('registeredUser')) || null, 
-      isLogged: JSON.parse(localStorage.getItem('isLogged')) || null, 
-      isRegistered: JSON.parse(localStorage.getItem('isRegistered')) || null, 
+      registeredUser: JSON.parse(sessionStorage.getItem('registeredUser')) || null, 
+      isLogged: JSON.parse(sessionStorage.getItem('isLogged')) || null, 
+      isRegistered: JSON.parse(sessionStorage.getItem('isRegistered')) || null, 
     }
   }, 
   methods: {
     updateDisconnect(status) {
-      localStorage.setItem('isLogged', status.isLogged)
-      localStorage.setItem('isRegistered', status.isRegistered)
+      sessionStorage.setItem('isLogged', status.isLogged)
+      sessionStorage.setItem('isRegistered', status.isRegistered)
     }, 
     updateRegisteredUser(user) {
       this.registeredUser = user
       this.isRegistered = true 
-      localStorage.setItem('registeredUser', JSON.stringify(user))
-      localStorage.setItem('isRegistered',this.isRegistered )
+      sessionStorage.setItem('registeredUser', JSON.stringify(user))
+      sessionStorage.setItem('isRegistered',this.isRegistered )
     }, 
     updateLoggedIn(status) {
       this.isLogged = status
-      localStorage.setItem('isLogged', status)
+      sessionStorage.setItem('isLogged', status)
     } 
   }
 }

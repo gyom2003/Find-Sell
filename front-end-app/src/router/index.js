@@ -12,8 +12,8 @@ const routes = [
     name: 'home',
     component: AxiosComponent,
     beforeEnter: (to, from, next) => {
-      const isRegistered = JSON.parse(localStorage.getItem('isRegistered'))
-      const isLogged = JSON.parse(localStorage.getItem('isLogged'))
+      const isRegistered = JSON.parse(sessionStorage.getItem('isRegistered'))
+      const isLogged = JSON.parse(sessionStorage.getItem('isLogged'))
       console.log("isRegistered:", isRegistered); 
       console.log("isLogged:", isLogged);
 
@@ -31,8 +31,8 @@ const routes = [
     name: 'login',
     component: LoginPage, 
     beforeEnter: (to, from, next) => {
-      const isLogged = JSON.parse(localStorage.getItem('isLogged'))
-      const isRegistered = JSON.parse(localStorage.getItem('isRegistered'))
+      const isLogged = JSON.parse(sessionStorage.getItem('isLogged'))
+      const isRegistered = JSON.parse(sessionStorage.getItem('isRegistered'))
       if (isLogged) {
         next({ name: "home" })
       } else if (!isRegistered) {
@@ -47,7 +47,7 @@ const routes = [
     name: 'register',
     component: RegisterPage, 
     beforeEnter: (to, from, next) => {
-      const isRegistered = JSON.parse(localStorage.getItem('isRegistered'))
+      const isRegistered = JSON.parse(sessionStorage.getItem('isRegistered'))
       if (isRegistered) {
         next({ name: 'login' })
       } else {
@@ -58,8 +58,8 @@ const routes = [
   {
     path: "/", 
     redirect: () => {
-      const isRegistered = JSON.parse(localStorage.getItem('isRegistered'))
-      const isLogged = JSON.parse(localStorage.getItem('isLogged'))
+      const isRegistered = JSON.parse(sessionStorage.getItem('isRegistered'))
+      const isLogged = JSON.parse(sessionStorage.getItem('isLogged'))
 
       if (!isRegistered) {
         return { name: 'register' }
